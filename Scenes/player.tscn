@@ -1,6 +1,6 @@
 [gd_scene load_steps=33 format=3 uid="uid://dcbx4ijgly87m"]
 
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_esj5f"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_esj5f"]
 [ext_resource type="Texture2D" uid="uid://16g2r05va50r" path="res://assets/sprites/brackeys_assets/knight.png" id="1_mte4w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x3fdv"]
@@ -230,7 +230,7 @@ position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_o45uv")
 animation = &"roll"
 autoplay = "idle"
-frame_progress = 0.819592
+frame_progress = 0.125768
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(0, -5)
