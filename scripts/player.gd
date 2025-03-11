@@ -11,7 +11,7 @@ var roll_direction := Vector2.ZERO
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 var last_played_anim := ""
 
-func _process(delta):
+func _process(_delta):
 	z_index = int(global_position.y)
 
 func _physics_process(delta):
