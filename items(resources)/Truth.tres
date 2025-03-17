@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://bsqp4mkw1npr3"]
+
+[ext_resource type="Script" path="res://items(resources)/item_data.gd" id="1_ao3tq"]
+[ext_resource type="Texture2D" uid="uid://dodo3okb5pxr0" path="res://assets/sprites/others/ui-items/K.png" id="2_d6vv1"]
+
+[resource]
+script = ExtResource("1_ao3tq")
+type = 5
+name = "Truth"
+description = "The  letter \"K\" means the Truth"
+texture = ExtResource("2_d6vv1")

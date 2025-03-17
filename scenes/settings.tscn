@@ -1,0 +1,116 @@
+[gd_scene load_steps=6 format=3 uid="uid://bykp7hvspupjp"]
+
+[ext_resource type="FontFile" uid="uid://c2h41m0rts0q4" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_8ghv5"]
+[ext_resource type="Script" path="res://scripts/settings.gd" id="1_d70df"]
+[ext_resource type="FontFile" uid="uid://tbxhh5bf2hsb" path="res://assets/fonts/VIKING-N.TTF" id="2_rmg7w"]
+[ext_resource type="Script" path="res://scripts/volume_slider.gd" id="3_n66wv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xqhyp"]
+bg_color = Color(0.404998, 0.635875, 0.746051, 1)
+shadow_color = Color(0, 0, 0, 0.811765)
+shadow_size = 5
+shadow_offset = Vector2(9.75, 6.44)
+
+[node name="settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d70df")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="options" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -302.5
+offset_top = -204.0
+offset_right = 302.5
+offset_bottom = 204.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xqhyp")
+
+[node name="VolumeSettings" type="VBoxContainer" parent="options"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -243.5
+offset_top = -163.0
+offset_right = 244.5
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="VolumeLabel" type="Label" parent="options/VolumeSettings"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_rmg7w")
+theme_override_font_sizes/font_size = 26
+text = "Volume Settings"
+
+[node name="MasterLabel" type="Label" parent="options/VolumeSettings"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_rmg7w")
+text = "Master"
+horizontal_alignment = 1
+
+[node name="MasterSlider" type="HSlider" parent="options/VolumeSettings"]
+layout_mode = 2
+max_value = 1.5
+step = 0.001
+script = ExtResource("3_n66wv")
+bus_name = "Master"
+
+[node name="MusicLabel" type="Label" parent="options/VolumeSettings"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_rmg7w")
+text = "Music"
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="options/VolumeSettings"]
+layout_mode = 2
+max_value = 1.5
+step = 0.001
+script = ExtResource("3_n66wv")
+bus_name = "Music"
+
+[node name="SFXLabel" type="Label" parent="options/VolumeSettings"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_rmg7w")
+text = "SFX"
+horizontal_alignment = 1
+
+[node name="SFXSlider" type="HSlider" parent="options/VolumeSettings"]
+layout_mode = 2
+max_value = 1.5
+step = 0.001
+script = ExtResource("3_n66wv")
+bus_name = "SFX"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 285.0
+offset_top = 129.0
+offset_right = 318.0
+offset_bottom = 159.0
+theme_override_fonts/font = ExtResource("1_8ghv5")
+theme_override_font_sizes/font_size = 21
+text = "<"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

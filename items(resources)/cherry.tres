@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://t4smbgcbpptp"]
+
+[ext_resource type="Script" path="res://items(resources)/item_data.gd" id="1_pjejq"]
+[ext_resource type="Texture2D" uid="uid://cacl6i621ypji" path="res://assets/sprites/others/ui-items/11.png" id="2_ny8gi"]
+
+[resource]
+script = ExtResource("1_pjejq")
+type = 5
+name = "Cherry"
+description = "Restores 1 health"
+texture = ExtResource("2_ny8gi")

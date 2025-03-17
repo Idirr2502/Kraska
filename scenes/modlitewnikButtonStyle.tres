@@ -1,0 +1,6 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://caiw6v8ffwn0s"]
+
+[ext_resource type="Texture2D" uid="uid://tdka10wnyut6" path="res://assets/sprites/others/ui-items/modlitewnik-i-kom-zlocony-bialy.webp" id="1_xleqy"]
+
+[resource]
+texture = ExtResource("1_xleqy")

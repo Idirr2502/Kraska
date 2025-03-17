@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://bjx5jiglqb1qw"]
+
+[ext_resource type="Script" path="res://items(resources)/item_data.gd" id="1_mdbcy"]
+[ext_resource type="Texture2D" uid="uid://cdhuiv5e5w6wt" path="res://assets/sprites/others/ui-items/N.png" id="2_q7ujc"]
+
+[resource]
+script = ExtResource("1_mdbcy")
+type = 5
+name = "Destiny"
+description = "The letter \"N\" means Destiny."
+texture = ExtResource("2_q7ujc")

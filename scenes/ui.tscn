@@ -1,0 +1,69 @@
+[gd_scene load_steps=12 format=3 uid="uid://2f4enyaso72k"]
+
+[ext_resource type="Script" path="res://scenes/ui.gd" id="1_1niv3"]
+[ext_resource type="StyleBox" uid="uid://d0kbd145w0va5" path="res://assets/styles/sackButtonStyle.tres" id="1_30h63"]
+[ext_resource type="Texture2D" uid="uid://jb5fkhu26vo5" path="res://assets/sprites/others/ui-items/burlap-sack-add-on-potato-parcel-30360074944597_600x.webp" id="1_hqkkh"]
+[ext_resource type="Texture2D" uid="uid://tdka10wnyut6" path="res://assets/sprites/others/ui-items/modlitewnik-i-kom-zlocony-bialy.webp" id="2_8yx4p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ut7f8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4ish2"]
+texture = ExtResource("1_hqkkh")
+modulate_color = Color(0.650128, 0.650128, 0.650128, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qys27"]
+texture = ExtResource("1_hqkkh")
+modulate_color = Color(0.408329, 0.408329, 0.408329, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bymi4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ugfhs"]
+texture = ExtResource("2_8yx4p")
+modulate_color = Color(0.691357, 0.691357, 0.691357, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mxq6o"]
+texture = ExtResource("2_8yx4p")
+modulate_color = Color(0.427493, 0.427493, 0.427493, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iacgn"]
+texture = ExtResource("2_8yx4p")
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1niv3")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 47.0
+offset_top = -175.0
+offset_right = 311.0
+offset_bottom = -47.0
+grow_vertical = 0
+
+[node name="sackButton" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ut7f8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_4ish2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_qys27")
+theme_override_styles/normal = ExtResource("1_30h63")
+
+[node name="modlitewnikButton" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bymi4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ugfhs")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_mxq6o")
+theme_override_styles/normal = SubResource("StyleBoxTexture_iacgn")
+
+[connection signal="pressed" from="HBoxContainer/sackButton" to="." method="_on_sack_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/modlitewnikButton" to="." method="_on_modlitewnik_button_pressed"]
