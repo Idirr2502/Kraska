@@ -1,0 +1,14 @@
+~ start
+Dev: To jest przykładowy npc odblokowujący wyjście z domu
+=> pytania
+
+~ pytania
+Babcia: Cześć wnusiu
+- Chcę wyjść z domu
+	Babcia: Już otwieram drzwi
+	=> end
+
+~ end
+Babcia: Do zobaczenia!
+set globals.can_exit = true
+=> END

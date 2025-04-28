@@ -1,14 +1,128 @@
-[gd_scene load_steps=3 format=3 uid="uid://brc1olvxm12qx"]
+[gd_scene load_steps=19 format=3 uid="uid://brc1olvxm12qx"]
 
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_6gprn"]
 [ext_resource type="PackedScene" uid="uid://dcbx4ijgly87m" path="res://scenes/player.tscn" id="1_38mdd"]
+[ext_resource type="Texture2D" uid="uid://ctxxf2mjurprd" path="res://assets/sprites/maps/home inside.png" id="2_3y6ot"]
 [ext_resource type="PackedScene" uid="uid://3d4j7f78g1hq" path="res://scenes/wall.tscn" id="2_e5i5h"]
+[ext_resource type="Script" path="res://scripts/camera_2d.gd" id="4_r5fam"]
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_label.gd" id="4_t3ryn"]
+[ext_resource type="Script" path="res://scripts/worldBorder.gd" id="7_gu1ej"]
+[ext_resource type="PackedScene" uid="uid://2h163i65n12l" path="res://scenes/npc.tscn" id="8_54833"]
+[ext_resource type="Script" path="res://scripts/area_2d.gd" id="9_ne0pj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x7kp1"]
+size = Vector2(558, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q0ndq"]
+size = Vector2(12, 501)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jv3x5"]
+size = Vector2(559.5, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_katej"]
+size = Vector2(603, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3q2p5"]
+size = Vector2(20, 512)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgifw"]
+size = Vector2(179, 94)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y04if"]
+size = Vector2(195.5, 165)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4l6nl"]
+size = Vector2(207, 231)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wj7sd"]
+radius = 53.0848
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_6gprn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -4096
+position = Vector2(254, 250)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_3y6ot")
 
 [node name="Player" parent="." instance=ExtResource("1_38mdd")]
+position = Vector2(283, 277)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="Player"]
+scale = Vector2(0.5, 0.5)
 zoom = Vector2(4, 4)
+script = ExtResource("4_r5fam")
+
+[node name="dialogue_grey" type="ColorRect" parent="Player/Camera2D"]
+visible = false
+z_index = 999
+offset_left = -465.0
+offset_top = -315.0
+offset_right = 454.0
+offset_bottom = 313.0
+color = Color(0.168627, 0.168627, 0.168627, 0.776471)
 
 [node name="Wall" parent="." instance=ExtResource("2_e5i5h")]
-position = Vector2(62, 20)
+position = Vector2(501, 358)
+
+[node name="DialogueLabel" type="RichTextLabel" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_t3ryn")
+skip_pause_at_abbreviations = PackedStringArray("Mr", "Mrs", "Ms", "Dr", "etc", "eg", "ex")
+
+[node name="WorldBorder" type="Area2D" parent="."]
+script = ExtResource("7_gu1ej")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorder"]
+position = Vector2(900, 172)
+shape = SubResource("RectangleShape2D_x7kp1")
+
+[node name="walls" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="walls"]
+collision_mask = 0
+
+[node name="left" type="CollisionShape2D" parent="walls/StaticBody2D"]
+position = Vector2(-5, 240.5)
+shape = SubResource("RectangleShape2D_q0ndq")
+
+[node name="up" type="CollisionShape2D" parent="walls/StaticBody2D"]
+position = Vector2(276.25, 53)
+shape = SubResource("RectangleShape2D_jv3x5")
+
+[node name="down" type="CollisionShape2D" parent="walls/StaticBody2D"]
+position = Vector2(266, 499)
+shape = SubResource("RectangleShape2D_katej")
+
+[node name="right" type="CollisionShape2D" parent="walls/StaticBody2D"]
+position = Vector2(552, 251)
+shape = SubResource("RectangleShape2D_3q2p5")
+
+[node name="bed1" type="CollisionShape2D" parent="walls/StaticBody2D"]
+position = Vector2(92, 132)
+shape = SubResource("RectangleShape2D_vgifw")
+
+[node name="bed2" type="CollisionShape2D" parent="walls/StaticBody2D"]
+position = Vector2(87, 477)
+shape = SubResource("RectangleShape2D_y04if")
+
+[node name="wardrobe" type="CollisionShape2D" parent="walls/StaticBody2D"]
+position = Vector2(587, 400)
+shape = SubResource("RectangleShape2D_4l6nl")
+
+[node name="NPC" parent="." instance=ExtResource("8_54833")]
+position = Vector2(480, 191)
+scale = Vector2(0.2, 0.2)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+script = ExtResource("9_ne0pj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(276, 110)
+shape = SubResource("CircleShape2D_wj7sd")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

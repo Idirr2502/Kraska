@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://2f4enyaso72k"]
 
-[ext_resource type="Script" path="res://scenes/ui.gd" id="1_1niv3"]
+[ext_resource type="Script" path="res://scripts/ui.gd" id="1_1niv3"]
 [ext_resource type="StyleBox" uid="uid://d0kbd145w0va5" path="res://assets/styles/sackButtonStyle.tres" id="1_30h63"]
 [ext_resource type="Texture2D" uid="uid://jb5fkhu26vo5" path="res://assets/sprites/others/ui-items/burlap-sack-add-on-potato-parcel-30360074944597_600x.webp" id="1_hqkkh"]
 [ext_resource type="Texture2D" uid="uid://tdka10wnyut6" path="res://assets/sprites/others/ui-items/modlitewnik-i-kom-zlocony-bialy.webp" id="2_8yx4p"]

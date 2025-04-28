@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://3d4j7f78g1hq"]
+[gd_scene load_steps=6 format=3 uid="uid://3d4j7f78g1hq"]
 
 [ext_resource type="Texture2D" uid="uid://dl8mkpfab1bfn" path="res://icon.svg" id="1_jpg21"]
 [ext_resource type="Script" path="res://scripts/wall.gd" id="1_n8p65"]
+[ext_resource type="PackedScene" uid="uid://bl5lqepcm17hq" path="res://scenes/interaction_area.tscn" id="3_mmuo0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nqyjl"]
 size = Vector2(32, 4)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kfc7u"]
+radius = 57.0088
 
 [node name="Wall" type="Node2D"]
 script = ExtResource("1_n8p65")
@@ -15,7 +19,13 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_jpg21")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_nqyjl")
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_mmuo0")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_kfc7u")

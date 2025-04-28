@@ -46,6 +46,7 @@ grow_vertical = 2
 columns = 4
 
 [node name="BackButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 62.0
 offset_top = 39.0
 offset_right = 150.0

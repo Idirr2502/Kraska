@@ -1,0 +1,20 @@
+~ start
+Dev: Witaj w testowym buildzie gry Kraska w wersji pre Aplha. Build jest daleki od końcowej wersji gry i na chwilę obecną testuje tylko podstawowe mechaniki takie jak dialogi, poruszanie się i interakcje. Ten dialog w przyszłości zostanie zastąpiony bardziej przystępną wersją tutorialu...
+=> pytania
+
+~ pytania
+Dev: Czego chciałbyś się dowiedzieć?
+- Chcę poznać sterowanie?
+	Dev: Poruszasz się klawiszami W, A, S, D. Użyj E, by wchodzić w interakcje.
+	=> pytania
+- Co znajdzie się w przyszłości w grze?
+	Dev: To wstępna wersja pre Alpha, zawiera więc tylko poruszanie się, przykładowy dialog i zmiany scen, w wersji beta zaimplementowane zostaną właściwe interakcje, oraz gameplay.
+	=> pytania
+- To wszystko, możemy przejść do testowania. => end
+
+~ end
+Dev: Do zobaczenia!
+set globals.intro_finished = true
+set globals.can_move = true
+=> END
+

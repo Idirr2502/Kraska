@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://2h163i65n12l"]
+
+[ext_resource type="Script" path="res://scripts/npc.gd" id="1_18jih"]
+[ext_resource type="Texture2D" uid="uid://cbxe5441xlohr" path="res://assets/sprites/characters/old_hag.png" id="1_73xsd"]
+[ext_resource type="PackedScene" uid="uid://bl5lqepcm17hq" path="res://scenes/interaction_area.tscn" id="3_erp58"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_34dp8"]
+radius = 64.9689
+height = 291.537
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wrmja"]
+radius = 258.699
+
+[node name="NPC" type="Node2D"]
+script = ExtResource("1_18jih")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_73xsd")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-12, 222)
+rotation = 1.56345
+shape = SubResource("CapsuleShape2D_34dp8")
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_erp58")]
+action_name = "talk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(-10, 223)
+shape = SubResource("CircleShape2D_wrmja")
