@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dcbx4ijgly87m"]
+[gd_scene load_steps=38 format=3 uid="uid://dcbx4ijgly87m"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_esj5f"]
 [ext_resource type="Texture2D" uid="uid://bp7g1jq0pk283" path="res://assets/sprites/characters/KRYSIA MOVEMENT/krysia walk front_0002.png" id="2_utkvd"]
@@ -33,6 +33,8 @@
 [ext_resource type="Texture2D" uid="uid://dw6m5a0dxuxl4" path="res://assets/sprites/characters/KRYSIA MOVEMENT/walk back_0005.png" id="31_t7ha7"]
 [ext_resource type="Texture2D" uid="uid://dqmkf0rglm3jl" path="res://assets/sprites/characters/KRYSIA MOVEMENT/walk back_0006.png" id="32_3iky3"]
 [ext_resource type="Texture2D" uid="uid://b5q6yiswwjqta" path="res://assets/sprites/characters/KRYSIA MOVEMENT/walk back_0007.png" id="33_karup"]
+[ext_resource type="Texture2D" uid="uid://bpc8d4rg5kp6c" path="res://assets/sprites/others/flame-3561350_960_720.webp" id="34_eri11"]
+[ext_resource type="Texture2D" uid="uid://c6330vcayeip" path="res://assets/sprites/others/a5bbfead133882d0a9f4c14a092c97be9cbbf5a3.png" id="35_ffq4b"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_o45uv"]
 animations = [{
@@ -208,3 +210,15 @@ autoplay = "idle_down"
 position = Vector2(0, -3)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_n5pap")
+
+[node name="lamp" type="Sprite2D" parent="Player"]
+unique_name_in_owner = true
+position = Vector2(-1, -60.5)
+scale = Vector2(0.09375, 0.09375)
+texture = ExtResource("34_eri11")
+
+[node name="PointLight2D" type="PointLight2D" parent="Player/lamp"]
+position = Vector2(-5.33331, 208)
+scale = Vector2(2.83333, 2.83333)
+shadow_enabled = true
+texture = ExtResource("35_ffq4b")

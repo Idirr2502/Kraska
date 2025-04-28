@@ -6,8 +6,17 @@ extends CharacterBody2D
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 var last_direction := Vector2.DOWN  # Domyślny kierunek w dół
 
+# lamp impl
+var lamp_visible : bool = true
+
 func _process(_delta):
 	z_index = int(global_position.y)
+	
+	#lamp impl
+	if Input.is_action_just_pressed("lamp"):
+		lamp_visible = !lamp_visible
+		
+	%lamp.visible = lamp_visible
 
 func _physics_process(_delta):
 	if globals.can_move:

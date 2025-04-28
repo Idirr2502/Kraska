@@ -11,8 +11,11 @@ var uv_cooldown = false
 var uv_active = false
 @export var secret_stuff: Array[Node]
 
+#lamp impl
+@export var lamp_time : float = 10.0
+
 func _ready() -> void:
-	%DurationLabel.text = "-1"
+	%DurationLabel.text = "supehrmoc UV naładowanie: 100%"
 	globals.can_move = true
 
 func _process(delta: float) -> void:
@@ -21,12 +24,14 @@ func _process(delta: float) -> void:
 	if !uv_cooldown && Input.is_action_pressed("uv") && current_duration <= uv_duration:
 		uv_active = true
 		current_duration += delta
-		%DurationLabel.text = "%.2f" % current_duration
+		var uv_percent = round((1.0 - (current_duration / uv_duration))*100)
+		%DurationLabel.text = "supehrmoc UV naładowanie: %.0f" % uv_percent + "%"
 	elif current_duration > 0:
 		uv_active = false
 		uv_cooldown = true
 		current_duration -= delta * load_to_cooldown_ratio
-		%DurationLabel.text = "%.2f" % current_duration
+		var uv_percent = round((1.0 - (current_duration / uv_duration))*100)
+		%DurationLabel.text = "supehrmoc UV naładowanie: %.0f" % uv_percent + "%"
 	else:
 		uv_active = false
 		uv_cooldown = false
@@ -39,3 +44,12 @@ func _process(delta: float) -> void:
 			else:
 				color.a = max(color.a - delta * fade_ratio, 0.0) # fade out faster
 			node.modulate = color
+	
+	#lamp processing
+	
+	if %Player.get_child(0).lamp_visible && lamp_time > 0.0:
+		lamp_time -= delta
+		lamp_time = clamp(lamp_time, 0.0, 10.0)
+		%LampDuration.text = "lampoczas: %.2f" % lamp_time
+	if lamp_time <= 0:
+		%Player.get_child(0).lamp_visible = false
