@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var color_rect = $Player/Camera2D/dialogue_grey
-@onready var player = $Player
+@onready var color_rect = $Sprite2D/Player/Camera2D/dialogue_grey
+@onready var player = $Sprite2D/Player
 
 func _ready() -> void:
 	# Rozpoczynamy dialog

@@ -1,0 +1,135 @@
+[gd_scene load_steps=17 format=3 uid="uid://27f7kjn5jbbk"]
+
+[ext_resource type="Texture2D" uid="uid://ctxxf2mjurprd" path="res://assets/sprites/maps/home inside.png" id="1_o84y7"]
+[ext_resource type="Script" path="res://scripts/worldBorder.gd" id="2_ry0i2"]
+[ext_resource type="Script" path="res://scripts/area_2d.gd" id="3_6klvj"]
+[ext_resource type="PackedScene" uid="uid://3d4j7f78g1hq" path="res://scenes/wall.tscn" id="4_f5472"]
+[ext_resource type="PackedScene" uid="uid://2h163i65n12l" path="res://scenes/npc.tscn" id="5_fb5ig"]
+[ext_resource type="PackedScene" uid="uid://dcbx4ijgly87m" path="res://scenes/player.tscn" id="6_nvf00"]
+[ext_resource type="Script" path="res://scenes/game_manager.gd" id="7_ypv8t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hhapp"]
+size = Vector2(558, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hh3dq"]
+size = Vector2(12, 501)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g20cv"]
+size = Vector2(559.5, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v236h"]
+size = Vector2(603, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gc4c"]
+size = Vector2(20, 512)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3fyhm"]
+size = Vector2(179, 94)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_idm2o"]
+size = Vector2(195.5, 165)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqlvw"]
+size = Vector2(207, 231)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f87dk"]
+radius = 53.0848
+
+[node name="testArea" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -4096
+position = Vector2(920, 549)
+scale = Vector2(0.440333, 0.440333)
+texture = ExtResource("1_o84y7")
+
+[node name="WorldBorder" type="Area2D" parent="Sprite2D"]
+position = Vector2(-1270, -1250)
+scale = Vector2(5, 5)
+script = ExtResource("2_ry0i2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/WorldBorder"]
+position = Vector2(900, 172)
+shape = SubResource("RectangleShape2D_hhapp")
+
+[node name="walls" type="Node2D" parent="Sprite2D"]
+position = Vector2(-1270, -1250)
+scale = Vector2(5, 5)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D/walls"]
+collision_mask = 0
+
+[node name="left" type="CollisionShape2D" parent="Sprite2D/walls/StaticBody2D"]
+position = Vector2(-5, 240.5)
+shape = SubResource("RectangleShape2D_hh3dq")
+
+[node name="up" type="CollisionShape2D" parent="Sprite2D/walls/StaticBody2D"]
+position = Vector2(276.25, 53)
+shape = SubResource("RectangleShape2D_g20cv")
+
+[node name="down" type="CollisionShape2D" parent="Sprite2D/walls/StaticBody2D"]
+position = Vector2(266, 499)
+shape = SubResource("RectangleShape2D_v236h")
+
+[node name="right" type="CollisionShape2D" parent="Sprite2D/walls/StaticBody2D"]
+position = Vector2(552, 251)
+shape = SubResource("RectangleShape2D_5gc4c")
+
+[node name="bed1" type="CollisionShape2D" parent="Sprite2D/walls/StaticBody2D"]
+position = Vector2(92, 132)
+shape = SubResource("RectangleShape2D_3fyhm")
+
+[node name="bed2" type="CollisionShape2D" parent="Sprite2D/walls/StaticBody2D"]
+position = Vector2(87, 477)
+shape = SubResource("RectangleShape2D_idm2o")
+
+[node name="wardrobe" type="CollisionShape2D" parent="Sprite2D/walls/StaticBody2D"]
+position = Vector2(587, 400)
+shape = SubResource("RectangleShape2D_nqlvw")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+position = Vector2(-1270, -1250)
+scale = Vector2(5, 5)
+collision_mask = 2
+script = ExtResource("3_6klvj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+position = Vector2(276, 110)
+shape = SubResource("CircleShape2D_f87dk")
+
+[node name="Wall" parent="Sprite2D" instance=ExtResource("4_f5472")]
+position = Vector2(1228.61, 563.21)
+scale = Vector2(5, 5)
+
+[node name="NPC" parent="Sprite2D" instance=ExtResource("5_fb5ig")]
+position = Vector2(1130, -295)
+scale = Vector2(1, 1)
+
+[node name="Player" parent="Sprite2D" instance=ExtResource("6_nvf00")]
+position = Vector2(145, 135)
+scale = Vector2(10, 10)
+
+[node name="Camera2D" type="Camera2D" parent="Sprite2D/Player"]
+position = Vector2(0, -16.6794)
+
+[node name="dialogue_grey" type="ColorRect" parent="Sprite2D/Player/Camera2D"]
+visible = false
+z_index = 999
+offset_left = -465.0
+offset_top = -315.0
+offset_right = 454.0
+offset_bottom = 313.0
+color = Color(0.168627, 0.168627, 0.168627, 0.776471)
+
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("secret_stuff")]
+script = ExtResource("7_ypv8t")
+secret_stuff = [NodePath("../Sprite2D/Wall")]
+
+[node name="DurationLabel" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 435.0
+offset_top = 454.0
+offset_right = 475.0
+offset_bottom = 477.0
+
+[connection signal="body_entered" from="Sprite2D/Area2D" to="Sprite2D/Area2D" method="_on_body_entered"]

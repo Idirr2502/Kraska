@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var move_speed := 100.0
+@export var move_speed := 300.0
 @export var roll_duration := 0.25
 
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
