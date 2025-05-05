@@ -1,8 +1,10 @@
 extends Control
 
 func _on_sack_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/sack.tscn")
+	get_tree().paused = true
+	%Sack.visible = true
 
 
 func _on_modlitewnik_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/modlitewnik.tscn")
+	get_tree().paused = true
+	%Modlitewnik.visible = true

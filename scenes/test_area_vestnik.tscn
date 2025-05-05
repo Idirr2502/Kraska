@@ -1,13 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://27f7kjn5jbbk"]
+[gd_scene load_steps=22 format=3 uid="uid://v2cb818bxu3a"]
 
-[ext_resource type="Texture2D" uid="uid://ctxxf2mjurprd" path="res://assets/sprites/maps/home inside.png" id="1_o84y7"]
-[ext_resource type="Script" path="res://scripts/worldBorder.gd" id="2_ry0i2"]
-[ext_resource type="Script" path="res://scripts/area_2d.gd" id="3_6klvj"]
-[ext_resource type="PackedScene" uid="uid://3d4j7f78g1hq" path="res://scenes/wall.tscn" id="4_f5472"]
-[ext_resource type="PackedScene" uid="uid://2h163i65n12l" path="res://scenes/npc.tscn" id="5_fb5ig"]
-[ext_resource type="PackedScene" uid="uid://dcbx4ijgly87m" path="res://scenes/player.tscn" id="6_nvf00"]
-[ext_resource type="Script" path="res://scripts/game_manager.gd" id="7_ypv8t"]
-[ext_resource type="PackedScene" uid="uid://2f4enyaso72k" path="res://scenes/ui.tscn" id="8_tj75l"]
+[ext_resource type="Texture2D" uid="uid://ctxxf2mjurprd" path="res://assets/sprites/maps/home inside.png" id="1_fhnkm"]
+[ext_resource type="Script" path="res://scripts/worldBorder.gd" id="2_nwtiw"]
+[ext_resource type="Script" path="res://scripts/area_2d.gd" id="3_d1q7a"]
+[ext_resource type="PackedScene" uid="uid://3d4j7f78g1hq" path="res://scenes/wall.tscn" id="4_2dj0m"]
+[ext_resource type="PackedScene" uid="uid://2h163i65n12l" path="res://scenes/npc.tscn" id="5_d7nc1"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="6_j2te1"]
+[ext_resource type="PackedScene" uid="uid://dcbx4ijgly87m" path="res://scenes/player.tscn" id="7_klltr"]
+[ext_resource type="PackedScene" uid="uid://2f4enyaso72k" path="res://scenes/ui.tscn" id="8_g3u7g"]
+[ext_resource type="PackedScene" uid="uid://bkms0w6o630v" path="res://scenes/sack.tscn" id="9_d0kfk"]
+[ext_resource type="PackedScene" uid="uid://c4d4kn0yv340i" path="res://scenes/modlitewnik.tscn" id="10_qkoux"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hhapp"]
 size = Vector2(558, 120)
@@ -49,13 +51,13 @@ offset_left = 41.0
 offset_top = -113.0
 offset_right = 1798.0
 offset_bottom = 1205.0
-texture = ExtResource("1_o84y7")
+texture = ExtResource("1_fhnkm")
 expand_mode = 1
 
 [node name="WorldBorder" type="Area2D" parent="TextureRect"]
 position = Vector2(319.777, 111.583)
 scale = Vector2(2.20167, 2.20167)
-script = ExtResource("2_ry0i2")
+script = ExtResource("2_nwtiw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/WorldBorder"]
 position = Vector2(900, 172)
@@ -100,22 +102,22 @@ shape = SubResource("RectangleShape2D_nqlvw")
 position = Vector2(319.777, 111.583)
 scale = Vector2(2.20167, 2.20167)
 collision_mask = 2
-script = ExtResource("3_6klvj")
+script = ExtResource("3_d1q7a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/Area2D"]
 position = Vector2(276, 110)
 shape = SubResource("CircleShape2D_f87dk")
 
-[node name="Wall" parent="TextureRect" instance=ExtResource("4_f5472")]
+[node name="Wall" parent="TextureRect" instance=ExtResource("4_2dj0m")]
 position = Vector2(1420, 910)
 scale = Vector2(2.20167, 2.20167)
 
-[node name="NPC" parent="TextureRect" instance=ExtResource("5_fb5ig")]
+[node name="NPC" parent="TextureRect" instance=ExtResource("5_d7nc1")]
 position = Vector2(1376.58, 532.102)
 scale = Vector2(0.440333, 0.440333)
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("secret_stuff")]
-script = ExtResource("7_ypv8t")
+script = ExtResource("6_j2te1")
 secret_stuff = [NodePath("../TextureRect/Wall")]
 
 [node name="DurationLabel" type="Label" parent="."]
@@ -125,7 +127,7 @@ offset_top = 454.0
 offset_right = 475.0
 offset_bottom = 477.0
 
-[node name="Player" parent="." instance=ExtResource("6_nvf00")]
+[node name="Player" parent="." instance=ExtResource("7_klltr")]
 unique_name_in_owner = true
 position = Vector2(983.848, 608.445)
 scale = Vector2(4.40333, 4.40333)
@@ -159,7 +161,27 @@ offset_top = 413.0
 offset_right = 831.0
 offset_bottom = 436.0
 
-[node name="UI" parent="LampDuration" instance=ExtResource("8_tj75l")]
-layout_mode = 1
+[node name="UIlayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="UIlayer" instance=ExtResource("8_g3u7g")]
+light_mask = 4
+visibility_layer = 4
+z_index = 3155
+offset_left = 24.0
+offset_top = -1.0
+offset_right = 24.0
+offset_bottom = -1.0
+
+[node name="Sack" parent="UIlayer" instance=ExtResource("9_d0kfk")]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+
+[node name="Modlitewnik" parent="UIlayer" instance=ExtResource("10_qkoux")]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+offset_top = 4.0
+offset_bottom = 4.0
 
 [connection signal="body_entered" from="TextureRect/Area2D" to="TextureRect/Area2D" method="_on_body_entered"]
