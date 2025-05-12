@@ -206,7 +206,7 @@ sprite_frames = SubResource("SpriteFrames_o45uv")
 animation = &"idle_down"
 autoplay = "idle_down"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+[node name="Player" type="CollisionShape2D" parent="Player"]
 position = Vector2(0, -3)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_n5pap")

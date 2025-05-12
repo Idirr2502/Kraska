@@ -8,8 +8,9 @@ var itemsLoad = [
 ]
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_accept"):
-		self.visible = !self.visible
+	if Input.is_action_pressed("inventory"):
+		get_tree().paused = false
+		%Sack.visible = false
 	
 func _ready():
 	for i in InvSize:

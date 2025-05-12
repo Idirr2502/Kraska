@@ -1,0 +1,187 @@
+[gd_scene load_steps=22 format=3 uid="uid://v2cb818bxu3a"]
+
+[ext_resource type="Texture2D" uid="uid://ctxxf2mjurprd" path="res://assets/sprites/maps/home inside.png" id="1_fhnkm"]
+[ext_resource type="Script" path="res://scripts/worldBorder.gd" id="2_nwtiw"]
+[ext_resource type="Script" path="res://scripts/area_2d.gd" id="3_d1q7a"]
+[ext_resource type="PackedScene" uid="uid://3d4j7f78g1hq" path="res://scenes/wall.tscn" id="4_2dj0m"]
+[ext_resource type="PackedScene" uid="uid://2h163i65n12l" path="res://scenes/npc.tscn" id="5_d7nc1"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="6_j2te1"]
+[ext_resource type="PackedScene" uid="uid://dcbx4ijgly87m" path="res://scenes/player.tscn" id="7_klltr"]
+[ext_resource type="PackedScene" uid="uid://2f4enyaso72k" path="res://scenes/ui.tscn" id="8_g3u7g"]
+[ext_resource type="PackedScene" uid="uid://bkms0w6o630v" path="res://scenes/sack.tscn" id="9_d0kfk"]
+[ext_resource type="PackedScene" uid="uid://c4d4kn0yv340i" path="res://scenes/modlitewnik.tscn" id="10_qkoux"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hhapp"]
+size = Vector2(558, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hh3dq"]
+size = Vector2(12, 501)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g20cv"]
+size = Vector2(559.5, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v236h"]
+size = Vector2(603, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gc4c"]
+size = Vector2(20, 512)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3fyhm"]
+size = Vector2(179, 94)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_idm2o"]
+size = Vector2(195.5, 165)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqlvw"]
+size = Vector2(207, 231)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f87dk"]
+radius = 53.0848
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hfn67"]
+polygon = PackedVector2Array(1510, 831, 1496, 773, 1505, 743, 1509, 702, 1503, 689, 1522, 685, 1511, 659, 1458, 609, 1511, 642, 1530, 683, 1524, 700)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vsajp"]
+polygon = PackedVector2Array(1425, 625, 1562, 625, 1565, 1049, 1421, 1046)
+
+[node name="testArea" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 41.0
+offset_top = -113.0
+offset_right = 1798.0
+offset_bottom = 1205.0
+texture = ExtResource("1_fhnkm")
+expand_mode = 1
+
+[node name="WorldBorder" type="Area2D" parent="TextureRect"]
+position = Vector2(319.777, 111.583)
+scale = Vector2(2.20167, 2.20167)
+script = ExtResource("2_nwtiw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/WorldBorder"]
+position = Vector2(900, 172)
+shape = SubResource("RectangleShape2D_hhapp")
+
+[node name="walls" type="Node2D" parent="TextureRect"]
+position = Vector2(319.777, 111.583)
+scale = Vector2(2.20167, 2.20167)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TextureRect/walls"]
+collision_mask = 0
+
+[node name="left" type="CollisionShape2D" parent="TextureRect/walls/StaticBody2D"]
+position = Vector2(-5, 240.5)
+shape = SubResource("RectangleShape2D_hh3dq")
+
+[node name="up" type="CollisionShape2D" parent="TextureRect/walls/StaticBody2D"]
+position = Vector2(276.25, 53)
+shape = SubResource("RectangleShape2D_g20cv")
+
+[node name="down" type="CollisionShape2D" parent="TextureRect/walls/StaticBody2D"]
+position = Vector2(266, 499)
+shape = SubResource("RectangleShape2D_v236h")
+
+[node name="right" type="CollisionShape2D" parent="TextureRect/walls/StaticBody2D"]
+position = Vector2(552, 251)
+shape = SubResource("RectangleShape2D_5gc4c")
+
+[node name="bed1" type="CollisionShape2D" parent="TextureRect/walls/StaticBody2D"]
+position = Vector2(92, 132)
+shape = SubResource("RectangleShape2D_3fyhm")
+
+[node name="bed2" type="CollisionShape2D" parent="TextureRect/walls/StaticBody2D"]
+position = Vector2(87, 477)
+shape = SubResource("RectangleShape2D_idm2o")
+
+[node name="wardrobe" type="CollisionShape2D" parent="TextureRect/walls/StaticBody2D"]
+position = Vector2(587, 400)
+shape = SubResource("RectangleShape2D_nqlvw")
+
+[node name="Area2D" type="Area2D" parent="TextureRect"]
+position = Vector2(319.777, 111.583)
+scale = Vector2(2.20167, 2.20167)
+collision_mask = 2
+script = ExtResource("3_d1q7a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/Area2D"]
+position = Vector2(276, 110)
+shape = SubResource("CircleShape2D_f87dk")
+
+[node name="Wall" parent="TextureRect" instance=ExtResource("4_2dj0m")]
+position = Vector2(1420, 910)
+scale = Vector2(2.20167, 2.20167)
+
+[node name="NPC" parent="TextureRect" instance=ExtResource("5_d7nc1")]
+position = Vector2(1376.58, 532.102)
+scale = Vector2(0.440333, 0.440333)
+
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("secret_stuff")]
+script = ExtResource("6_j2te1")
+secret_stuff = [NodePath("../TextureRect/Wall")]
+
+[node name="DurationLabel" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 435.0
+offset_top = 454.0
+offset_right = 475.0
+offset_bottom = 477.0
+
+[node name="Player" parent="." instance=ExtResource("7_klltr")]
+unique_name_in_owner = true
+position = Vector2(983.848, 608.445)
+scale = Vector2(4.40333, 4.40333)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0, -16.6794)
+
+[node name="dialogue_grey" type="ColorRect" parent="Player/Camera2D"]
+visible = false
+z_index = 999
+offset_left = -465.0
+offset_top = -315.0
+offset_right = 454.0
+offset_bottom = 313.0
+color = Color(0.168627, 0.168627, 0.168627, 0.776471)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.230315, 0.230315, 0.230315, 1)
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="."]
+position = Vector2(-68, -302)
+occluder = SubResource("OccluderPolygon2D_hfn67")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_vsajp")
+
+[node name="LampDuration" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 791.0
+offset_top = 413.0
+offset_right = 831.0
+offset_bottom = 436.0
+
+[node name="UIlayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="UIlayer" instance=ExtResource("8_g3u7g")]
+light_mask = 4
+visibility_layer = 4
+z_index = 3155
+offset_left = 24.0
+offset_top = -1.0
+offset_right = 24.0
+offset_bottom = -1.0
+
+[node name="Sack" parent="UIlayer" instance=ExtResource("9_d0kfk")]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+
+[node name="Modlitewnik" parent="UIlayer" instance=ExtResource("10_qkoux")]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+offset_top = 4.0
+offset_bottom = 4.0
+
+[connection signal="body_entered" from="TextureRect/Area2D" to="TextureRect/Area2D" method="_on_body_entered"]

@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0v1fpcsfgwa6"]
+
+[ext_resource type="Script" path="res://scenes/dialogue_controller.gd" id="1_ofv4g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mm6ee"]
+bg_color = Color(0.113725, 0.113725, 0.113725, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hjlld"]
+
+[node name="DialogueController" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ofv4g")
+
+[node name="DialogueBox" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -289.0
+offset_right = 1920.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mm6ee")
+
+[node name="Logo" type="Panel" parent="DialogueBox"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -59.0
+offset_top = -54.0
+offset_right = -19.0
+offset_bottom = -14.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_hjlld")
+
+[node name="DialogueContent" type="Label" parent="DialogueBox"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 19.0
+offset_top = 16.0
+offset_right = 1896.0
+offset_bottom = 277.0
+theme_override_font_sizes/font_size = 71
+text = "Here I am, speaking, What is the cost of lies?"
+
+[node name="Speaker" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 10.0
+offset_top = 731.0
+offset_right = 250.0
+offset_bottom = 791.0
+theme_override_font_sizes/font_size = 31
+text = "{{ Speaker }}"

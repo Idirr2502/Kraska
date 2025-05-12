@@ -1,0 +1,21 @@
+{
+  "npc_alice": [
+	{
+	  "speaker_name": "Babcia",
+	  "dialogue_text": "Czesc!",
+	  "portrait_path": ""
+	},
+	{
+	  "speaker_name": "Kraska",
+	  "dialogue_text": "No siema",
+	  "portrait_path": ""
+	}
+  ],
+  "npc_bob": [
+	{
+	  "speaker_name": "Bob",
+	  "dialogue_text": "jestem bob?",
+	  "portrait_path": ""
+	}
+  ]
+}

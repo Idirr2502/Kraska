@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 
 InteractionManager="*res://scenes/interaction_manager.tscn"
 globals="*res://scripts/globals.gd"
-DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [display]
 
@@ -33,10 +32,6 @@ project/assembly_name="Kraska"
 [editor]
 
 version_control/autoload_on_startup=true
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 [global_group]
 
@@ -88,10 +83,25 @@ uv={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194325,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+inventory={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":73,"key_label":0,"unicode":105,"location":0,"echo":false,"script":null)
+]
+}
+vestnik={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":86,"key_label":0,"unicode":118,"location":0,"echo":false,"script":null)
+]
+}
+ui_interact={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":90,"key_label":0,"unicode":122,"location":0,"echo":false,"script":null)
+]
+}
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogues/tutorial.dialogue", "res://dialogues/dialog1.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogues/archive/dialog1.dialogue", "res://dialogues/archive/tutorial.dialogue")
 
 [layer_names]
 
