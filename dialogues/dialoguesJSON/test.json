@@ -46,6 +46,12 @@
 	  "portrait_path": "res://assets/sprites/characters/old_hag.png"
 	}
 ],
+"babcia_dialog_koniec": [
+	{
+	  "speaker_name": "Babcia",
+	  "dialogue_text": "Dostałaś jeść, więc czego ty jeszcze chcesz? ",
+	  "portrait_path": "res://assets/sprites/characters/old_hag.png"
+	}],
   "random_dialog_test_1": [
 	{
 	  "speaker_name": "Bob",

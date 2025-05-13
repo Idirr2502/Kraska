@@ -5,7 +5,7 @@ extends Node2D
 @onready var color_rect = $"../Player/Camera2D/dialogue_grey"
 @export var dialogue_id: String = "babcia_dialog_1"
 var can_dialogue := false
-
+var dialogue_happened := false
 
 #func _ready() -> void:
 	#interaction_area.interact = Callable(self, "_on_interact")
@@ -38,10 +38,13 @@ var can_dialogue := false
 
 
 func _process(_delta):
+	if dialogue_happened:
+		dialogue_id = "babcia_dialog_koniec"
 	if can_dialogue && Input.is_action_just_pressed("interact"):
 		var dialogue_controller = %DialogueController
 		dialogue_controller.start_dialogue(dialogue_id)
 		get_tree().paused = true
+		dialogue_happened = true
 
 func _on_interaction_area_body_entered(body: Node2D) -> void:
 	if body.name == "Player":

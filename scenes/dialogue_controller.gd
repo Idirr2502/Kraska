@@ -7,6 +7,8 @@ extends Control
 @export var dialogue_font_size: int = 18
 @export var speaker_font_size: int = 22
 
+@onready var player = %Player
+
 var dialogue_map: Dictionary = {}
 var current_sequence: DialogueSequence
 var current_index: int = 0
@@ -21,6 +23,9 @@ var awaiting_choice := false
 #a tu do testowania daję zmienną żeby zobaczyć jak działają wybory, ale można ją dać do global vars
 var player_choice
 
+#tu mapujemy czy dane dialogi już się odbyły. Przydatne jesli nie chcemy powtarzać tego
+#samego dialogu wiele razy
+#var npc_dialog_state: Dictionary = {}
 
 func load_all_dialogues_from_json(path: String):
 	var file := FileAccess.open(path, FileAccess.READ)
@@ -43,11 +48,23 @@ func load_all_dialogues_from_json(path: String):
 
 func start_dialogue(dialogue_id: String):
 	if dialogue_map.has(dialogue_id):
-		var sequence: DialogueSequence = dialogue_map[dialogue_id]
-		play_dialogue(sequence)
-		is_in_dialogue = true
-		visible = true
-		%UI.visible = false
+		
+		#tu jest implementacja tej opcjonalnej logiki do dialogów które się już odbyły, ale narazie
+		#jest niedopracowana więc zostawiam.
+		
+		#if npc_dialog_state.has(dialogue_id) and npc_dialog_state[dialogue_id]:
+			#print("Dialog with this NPC already happened.")
+			#get_tree().paused = false
+			#return
+		#else:
+			player.set_process_input(false)
+			var sequence: DialogueSequence = dialogue_map[dialogue_id]
+			play_dialogue(sequence)
+			is_in_dialogue = true
+			visible = true
+			%UI.visible = false
+			#tu ustawiamy że dialog z danym npc już się odbył
+			#npc_dialog_state[dialogue_id] = true
 	else:
 		print("No dialogue found for ", dialogue_id)
 		
@@ -66,6 +83,7 @@ func show_current_line() -> void:
 		%DialogueContent.text = ""
 		%Portrait.texture = null
 		%UI.visible = true
+		player.set_process_input(true)
 		return
 
 	var line = current_sequence.lines[current_index]
@@ -129,6 +147,9 @@ func _on_choice_selected(choice_text: String):
 	#w nim są zdefiniowane klucze do poszczególnych wyborów
 	#np babcia_dialog_1_placki
 	start_dialogue("babcia_dialog_1_" + choice_text.to_lower())
+	
+	#i zmieniamy kolejny dialog babci na babcia_koniec
+	
 
 func apply_fonts():
 	if speaker_font:
