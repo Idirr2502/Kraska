@@ -3,8 +3,8 @@ extends Node2D
 @onready var interaction_area: InteractionArea = $InteractionArea
 @onready var player = $"../Player" # Wskaźnik do gracza
 @onready var color_rect = $"../Player/Camera2D/dialogue_grey"
-@export var npc_id: String = "npc_alice"
-
+@export var dialogue_id: String = "babcia_dialog_1"
+var can_dialogue := false
 
 
 #func _ready() -> void:
@@ -37,17 +37,23 @@ extends Node2D
 	#player.set_process_input(true)  # Przywrócenie wejść
 
 
+func _process(_delta):
+	if can_dialogue && Input.is_action_just_pressed("interact"):
+		var dialogue_controller = %DialogueController
+		dialogue_controller.start_dialogue(dialogue_id)
+		get_tree().paused = true
+
 func _on_interaction_area_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		var dialogue_controller = %DialogueController
-		dialogue_controller.current_npc_id = npc_id
-		%GameManager.in_dialogue_area = true
+		dialogue_controller.current_dialogue_id = dialogue_id
+		can_dialogue = true
 
 
 
 func _on_interaction_area_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
 		var dialogue_controller = %DialogueController
-		if dialogue_controller.current_npc_id == npc_id:
-			dialogue_controller.current_npc_id = ""
-		%GameManager.in_dialogue_area = false
+		if dialogue_controller.current_dialogue_id == dialogue_id:
+			dialogue_controller.current_dialogue_id = ""
+			can_dialogue = false

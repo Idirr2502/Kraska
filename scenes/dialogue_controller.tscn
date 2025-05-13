@@ -1,6 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://b0v1fpcsfgwa6"]
+[gd_scene load_steps=7 format=3 uid="uid://b0v1fpcsfgwa6"]
 
 [ext_resource type="Script" path="res://scenes/dialogue_controller.gd" id="1_ofv4g"]
+[ext_resource type="PackedScene" uid="uid://dmhwtjjsy2qdp" path="res://scenes/choice_button.tscn" id="2_ioocl"]
+[ext_resource type="PackedScene" uid="uid://c1th6y4megkds" path="res://scenes/choice_panel.tscn" id="2_nj8vk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3sko3"]
+bg_color = Color(0, 0, 0, 0.239216)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mm6ee"]
 bg_color = Color(0.113725, 0.113725, 0.113725, 1)
@@ -15,6 +20,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ofv4g")
+choice_button_scene = ExtResource("2_ioocl")
+
+[node name="GrayBG" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3sko3")
+
+[node name="Portrait" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -765.0
+offset_right = 621.0
+grow_vertical = 0
+stretch_mode = 4
 
 [node name="DialogueBox" type="Panel" parent="."]
 layout_mode = 1
@@ -50,6 +76,7 @@ offset_right = 1896.0
 offset_bottom = 277.0
 theme_override_font_sizes/font_size = 71
 text = "Here I am, speaking, What is the cost of lies?"
+autowrap_mode = 3
 
 [node name="Speaker" type="Label" parent="."]
 unique_name_in_owner = true
@@ -60,3 +87,9 @@ offset_right = 250.0
 offset_bottom = 791.0
 theme_override_font_sizes/font_size = 31
 text = "{{ Speaker }}"
+
+[node name="ChoicePanel" parent="." instance=ExtResource("2_nj8vk")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = -289.0
+offset_top = -289.0

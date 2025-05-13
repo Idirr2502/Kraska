@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmhwtjjsy2qdp"]
+
+[ext_resource type="FontFile" uid="uid://dsdmbyjefk4v2" path="res://assets/fonts/PixelOperator8.ttf" id="1_2ebpq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0fq20"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pbrai"]
+bg_color = Color(0, 0, 0, 0.462745)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mxa82"]
+bg_color = Color(0, 0, 0, 0.694118)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ux7ly"]
+bg_color = Color(0, 0, 0, 0.286275)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="ChoiceButton" type="Button"]
+offset_right = 358.0
+offset_bottom = 86.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_2ebpq")
+theme_override_font_sizes/font_size = 61
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0fq20")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pbrai")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mxa82")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ux7ly")
+text = "Kill Her"

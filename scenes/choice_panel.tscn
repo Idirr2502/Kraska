@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c1th6y4megkds"]
+
+[node name="ChoicePanel" type="VBoxContainer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -302.0
+offset_top = -302.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0

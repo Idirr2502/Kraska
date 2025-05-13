@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://drq0fbpadce5h"]
+[gd_scene load_steps=25 format=3 uid="uid://drq0fbpadce5h"]
 
 [ext_resource type="Texture2D" uid="uid://ctxxf2mjurprd" path="res://assets/sprites/maps/home inside.png" id="1_lp32d"]
 [ext_resource type="Script" path="res://scripts/worldBorder.gd" id="2_535gn"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://bkms0w6o630v" path="res://scenes/sack.tscn" id="9_vlq4w"]
 [ext_resource type="PackedScene" uid="uid://c4d4kn0yv340i" path="res://scenes/modlitewnik.tscn" id="10_l06t4"]
 [ext_resource type="PackedScene" uid="uid://b0v1fpcsfgwa6" path="res://scenes/dialogue_controller.tscn" id="11_ika2j"]
+[ext_resource type="FontFile" uid="uid://tbxhh5bf2hsb" path="res://assets/fonts/VIKING-N.TTF" id="13_omqfq"]
+[ext_resource type="FontFile" uid="uid://dsdmbyjefk4v2" path="res://assets/fonts/PixelOperator8.ttf" id="13_v1ilc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hhapp"]
 size = Vector2(558, 120)
@@ -137,18 +139,6 @@ scale = Vector2(4.40333, 4.40333)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -16.6794)
 
-[node name="dialogue_grey" type="ColorRect" parent="Player/Camera2D"]
-visible = false
-z_index = 999
-offset_left = -465.0
-offset_top = -315.0
-offset_right = 454.0
-offset_bottom = 313.0
-color = Color(0.168627, 0.168627, 0.168627, 0.776471)
-
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.230315, 0.230315, 0.230315, 1)
-
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="."]
 position = Vector2(-68, -302)
 occluder = SubResource("OccluderPolygon2D_hfn67")
@@ -191,5 +181,9 @@ offset_bottom = 4.0
 unique_name_in_owner = true
 process_mode = 2
 visible = false
+dialogue_font = ExtResource("13_v1ilc")
+speaker_font = ExtResource("13_omqfq")
+dialogue_font_size = 2
+speaker_font_size = 3
 
 [connection signal="body_entered" from="TextureRect/Area2D" to="TextureRect/Area2D" method="_on_body_entered"]

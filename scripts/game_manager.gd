@@ -22,10 +22,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	#print(in_dialogue_area)
 	#print(Input.is_action_just_pressed("ui_interact"))
-	if in_dialogue_area and Input.is_action_just_pressed("interact"):
-		print("yeah!")
-		get_tree().paused = true
-		
 	# UV power impl
 	if !uv_cooldown && Input.is_action_pressed("uv") && current_duration <= uv_duration:
 		uv_active = true

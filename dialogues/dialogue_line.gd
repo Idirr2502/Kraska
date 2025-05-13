@@ -1,9 +1,10 @@
 extends Resource
 class_name DialogueLineData
 
-@export var speaker_name: String
-@export var dialogue_text: String
-@export var portrait_texture: Texture2D
+var speaker_name: String
+var dialogue_text: String
+var portrait_texture: Texture2D
+var choices: Array = []
 
 func load_from_dict(data: Dictionary):
 	speaker_name = data.get("speaker_name", "")
@@ -11,3 +12,4 @@ func load_from_dict(data: Dictionary):
 	var path = data.get("portrait_path", "")
 	if path != "":
 		portrait_texture = load(path)
+	choices = data.get("choices",[])

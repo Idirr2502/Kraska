@@ -1,17 +1,52 @@
 {
-  "npc_alice": [
+  "babcia_dialog_1": [
 	{
 	  "speaker_name": "Babcia",
-	  "dialogue_text": "Czesc!",
-	  "portrait_path": ""
+	  "dialogue_text": "Czesc! Co chcesz jeść? ",
+	  "portrait_path": "res://assets/sprites/characters/old_hag.png",
+	  "choices": ["Pierogi", "Placki", "Zupa"]
 	},
 	{
-	  "speaker_name": "Kraska",
-	  "dialogue_text": "No siema",
-	  "portrait_path": ""
+		"_comment": "Po każdym wyborze trzeba dawać takiego pustego jsona, bo logika mi się trochę pierdoli i narazie to olewam bo są innego rzeczy do zrobienia"
 	}
   ],
-  "npc_bob": [
+  "babcia_dialog_1_pierogi": [
+	{
+	  "speaker_name": "Kraska",
+	  "dialogue_text": "Ty no pieroga by się zjadło co nie babcia?",
+	  "portrait_path": "res://dialogues/compressed_character_textures/krysia walk right_0002.png"
+	},
+	{
+	  "speaker_name": "Babcia",
+	  "dialogue_text": "Już się robi.",
+	  "portrait_path": "res://assets/sprites/characters/old_hag.png"
+	}
+],
+"babcia_dialog_1_placki": [
+	{
+	  "speaker_name": "Kraska",
+	  "dialogue_text": "Ty no placka by się zjadło co nie babcia?",
+	  "portrait_path": "res://dialogues/compressed_character_textures/krysia walk right_0002.png"
+	},
+	{
+	  "speaker_name": "Babcia",
+	  "dialogue_text": "Już się robi.",
+	  "portrait_path": "res://assets/sprites/characters/old_hag.png"
+	}
+],
+"babcia_dialog_1_zupa": [
+	{
+	  "speaker_name": "Kraska",
+	  "dialogue_text": "Ty no zupę by się zjadło co nie babcia?",
+	  "portrait_path": "res://dialogues/compressed_character_textures/krysia walk right_0002.png"
+	},
+	{
+	  "speaker_name": "Babcia",
+	  "dialogue_text": "Już się robi.",
+	  "portrait_path": "res://assets/sprites/characters/old_hag.png"
+	}
+],
+  "random_dialog_test_1": [
 	{
 	  "speaker_name": "Bob",
 	  "dialogue_text": "jestem bob?",
