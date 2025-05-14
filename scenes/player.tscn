@@ -217,7 +217,8 @@ position = Vector2(-1, -60.5)
 scale = Vector2(0.09375, 0.09375)
 texture = ExtResource("34_eri11")
 
-[node name="PointLight2D" type="PointLight2D" parent="Player/lamp"]
+[node name="Light" type="PointLight2D" parent="Player/lamp"]
+unique_name_in_owner = true
 position = Vector2(-5.33331, 208)
 scale = Vector2(2.83333, 2.83333)
 shadow_enabled = true

@@ -1,13 +1,13 @@
 [gd_scene load_steps=20 format=3 uid="uid://27f7kjn5jbbk"]
 
-[ext_resource type="Texture2D" uid="uid://ctxxf2mjurprd" path="res://assets/sprites/maps/home inside.png" id="1_o84y7"]
-[ext_resource type="Script" path="res://scripts/worldBorder.gd" id="2_ry0i2"]
-[ext_resource type="Script" path="res://scripts/area_2d.gd" id="3_6klvj"]
-[ext_resource type="PackedScene" uid="uid://3d4j7f78g1hq" path="res://scenes/wall.tscn" id="4_f5472"]
-[ext_resource type="PackedScene" uid="uid://2h163i65n12l" path="res://scenes/npc.tscn" id="5_fb5ig"]
-[ext_resource type="PackedScene" uid="uid://dcbx4ijgly87m" path="res://scenes/player.tscn" id="6_nvf00"]
-[ext_resource type="Script" path="res://scripts/game_manager.gd" id="7_ypv8t"]
-[ext_resource type="PackedScene" uid="uid://2f4enyaso72k" path="res://scenes/ui.tscn" id="8_tj75l"]
+[ext_resource type="Texture2D" uid="uid://ctxxf2mjurprd" path="res://assets/sprites/maps/home inside.png" id="1_fqpfc"]
+[ext_resource type="Script" path="res://scripts/worldBorder.gd" id="2_f2iba"]
+[ext_resource type="Script" path="res://scripts/area_2d.gd" id="3_1w2nf"]
+[ext_resource type="PackedScene" uid="uid://3d4j7f78g1hq" path="res://scenes/wall.tscn" id="4_0uc3x"]
+[ext_resource type="PackedScene" uid="uid://2h163i65n12l" path="res://scenes/npc.tscn" id="5_yjdfx"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="6_s8vq7"]
+[ext_resource type="PackedScene" uid="uid://dcbx4ijgly87m" path="res://scenes/player.tscn" id="7_n4f83"]
+[ext_resource type="PackedScene" uid="uid://1k3hnspqb5ad" path="res://scenes/oil.tscn" id="8_kl1ma"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hhapp"]
 size = Vector2(558, 120)
@@ -49,13 +49,13 @@ offset_left = 41.0
 offset_top = -113.0
 offset_right = 1798.0
 offset_bottom = 1205.0
-texture = ExtResource("1_o84y7")
+texture = ExtResource("1_fqpfc")
 expand_mode = 1
 
 [node name="WorldBorder" type="Area2D" parent="TextureRect"]
 position = Vector2(319.777, 111.583)
 scale = Vector2(2.20167, 2.20167)
-script = ExtResource("2_ry0i2")
+script = ExtResource("2_f2iba")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/WorldBorder"]
 position = Vector2(900, 172)
@@ -100,22 +100,23 @@ shape = SubResource("RectangleShape2D_nqlvw")
 position = Vector2(319.777, 111.583)
 scale = Vector2(2.20167, 2.20167)
 collision_mask = 2
-script = ExtResource("3_6klvj")
+script = ExtResource("3_1w2nf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/Area2D"]
 position = Vector2(276, 110)
 shape = SubResource("CircleShape2D_f87dk")
 
-[node name="Wall" parent="TextureRect" instance=ExtResource("4_f5472")]
+[node name="Wall" parent="TextureRect" instance=ExtResource("4_0uc3x")]
 position = Vector2(1420, 910)
 scale = Vector2(2.20167, 2.20167)
 
-[node name="NPC" parent="TextureRect" instance=ExtResource("5_fb5ig")]
+[node name="NPC" parent="TextureRect" instance=ExtResource("5_yjdfx")]
 position = Vector2(1376.58, 532.102)
 scale = Vector2(0.440333, 0.440333)
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("secret_stuff")]
-script = ExtResource("7_ypv8t")
+unique_name_in_owner = true
+script = ExtResource("6_s8vq7")
 secret_stuff = [NodePath("../TextureRect/Wall")]
 
 [node name="DurationLabel" type="Label" parent="."]
@@ -125,7 +126,7 @@ offset_top = 454.0
 offset_right = 475.0
 offset_bottom = 477.0
 
-[node name="Player" parent="." instance=ExtResource("6_nvf00")]
+[node name="Player" parent="." instance=ExtResource("7_n4f83")]
 unique_name_in_owner = true
 position = Vector2(983.848, 608.445)
 scale = Vector2(4.40333, 4.40333)
@@ -143,7 +144,7 @@ offset_bottom = 313.0
 color = Color(0.168627, 0.168627, 0.168627, 0.776471)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.230315, 0.230315, 0.230315, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="."]
 position = Vector2(-68, -302)
@@ -159,7 +160,7 @@ offset_top = 413.0
 offset_right = 831.0
 offset_bottom = 436.0
 
-[node name="UI" parent="LampDuration" instance=ExtResource("8_tj75l")]
-layout_mode = 1
+[node name="Oil" parent="." instance=ExtResource("8_kl1ma")]
+position = Vector2(996, 892)
 
 [connection signal="body_entered" from="TextureRect/Area2D" to="TextureRect/Area2D" method="_on_body_entered"]

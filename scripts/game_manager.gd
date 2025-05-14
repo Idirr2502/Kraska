@@ -14,7 +14,7 @@ var in_dialogue_area = false
 
 #lamp impl
 @export var lamp_time : float = 10.0
-
+var current_lamp_time = lamp_time
 func _ready() -> void:
 	%DurationLabel.text = "supehrmoc UV naładowanie: 100%"
 	globals.can_move = true
@@ -49,9 +49,11 @@ func _process(delta: float) -> void:
 	
 	#lamp processing
 	
-	if %Player.get_child(0).lamp_visible && lamp_time > 0.0:
-		lamp_time -= delta
-		lamp_time = clamp(lamp_time, 0.0, 10.0)
-		%LampDuration.text = "lampoczas: %.2f" % lamp_time
-	if lamp_time <= 0:
+	if %Player.get_child(0).lamp_visible && current_lamp_time > 0.0:
+		current_lamp_time -= delta
+		current_lamp_time = clamp(current_lamp_time, 0.0, 10.0)
+		%LampDuration.text = "lampoczas: %.2f" % current_lamp_time
+		# tak sie dostajemy do lampy xd narazie.. A tak to po prostu dajemy proporcjonalną wielkość tej lampy
+		%Player.get_child(0).get_child(2).get_child(0).texture_scale = current_lamp_time / lamp_time + 0.2
+	if current_lamp_time <= 0:
 		%Player.get_child(0).lamp_visible = false
